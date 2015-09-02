@@ -1,0 +1,27 @@
+{
+  "name": "mglaman/docker-helper",
+  "description": "Helper class for interacting with Docker, Docker Compose, and Docker Machine.",
+  "require": {
+    "symfony/process": "2.7.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "mglaman\\Docker\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "mglaman\\Docker\\Tests\\": "src"
+    }
+  },
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Matt Glaman",
+      "email": "nmd.matt@gmail.com"
+    }
+  ]
+}
