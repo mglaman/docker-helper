@@ -49,43 +49,41 @@ class Compose extends DockerBase {
 
   public static function build()
   {
-    return self::runCommand('docker-compose', ['build']);
+    return self::runCommand('build');
   }
 
   public static function logs(array $args = [])
   {
-    array_unshift($args, 'logs');
-    return self::runCommand('docker-compose', $args);
+    return self::runCommand('logs', $args);
   }
 
   public static function kill()
   {
-    return self::runCommand('docker-compose', ['kill']);
+    return self::runCommand('kill');
   }
 
   public static function rm($force = false)
   {
-    $args = ['rm'];
+    $args = [];
     if ($force) {
       $args[] = '-f';
     }
-    return self::runCommand('docker-compose', $args);
+    return self::runCommand('rm', $args);
   }
 
   public static function start()
   {
-    return self::runCommand('docker-compose', ['start']);
+    return self::runCommand('start');
   }
 
   public static function stop()
   {
-    return self::runCommand('docker-compose', ['stop']);
+    return self::runCommand('stop');
   }
 
   public static function up(array $args = [])
   {
-    array_unshift($args, 'up');
-    return self::runCommand('docker-compose', $args);
+    return self::runCommand('up', $args);
   }
 
 }
