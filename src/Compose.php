@@ -82,9 +82,10 @@ class Compose extends DockerBase {
     return self::runCommand('docker-compose', ['stop']);
   }
 
-  public static function up()
+  public static function up(array $args = [])
   {
-    return self::runCommand('docker-compose', ['up']);
+    array_unshift($args, 'up');
+    return self::runCommand('docker-compose', $args);
   }
 
 }
