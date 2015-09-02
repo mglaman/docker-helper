@@ -41,7 +41,8 @@ class Docker extends DockerBase {
       "--format='{{(index (index .NetworkSettings.Ports \"{$port}/{$protocol}\") 0).HostPort}}",
       $name
     ]);
-    return trim($cmd->getOutput());
+
+    return preg_replace('/[^0-9,.]+/i', '', $cmd->getOutput());
   }
 
   public static function run(array $args, $callback = null) {

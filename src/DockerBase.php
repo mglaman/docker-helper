@@ -33,8 +33,11 @@ abstract class DockerBase implements DockerInterface {
   {
     // Place command before args
     array_unshift($args, $command);
+
     // Place docker/docker-compose/etc before command.
-    array_unshift($args, self::command());
+    /** @var DockerInterface $calledClass */
+    $calledClass = get_called_class();
+    array_unshift($args, $calledClass::command());
 
     $processBuilder = ProcessBuilder::create($args);
     $processBuilder->setTimeout(3600);
