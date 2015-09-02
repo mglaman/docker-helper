@@ -11,14 +11,16 @@ namespace mglaman\Docker;
 
 use Symfony\Component\Process\ProcessBuilder;
 
-abstract class DockerBase {
-
+interface DockerInterface {
   /**
    * Returns the command to be run.
    *
    * @return string
    */
-  abstract function command();
+  public static function command();
+}
+
+abstract class DockerBase implements DockerInterface {
 
   /**
    * @return bool

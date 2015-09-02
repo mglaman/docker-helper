@@ -9,7 +9,7 @@
 namespace mglaman\Docker;
 
 class Machine extends DockerBase {
-  function command() {
+  public static function command() {
     return 'docker-machine';
   }
 

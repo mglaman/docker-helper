@@ -10,7 +10,7 @@ namespace mglaman\Docker;
 
 
 class Docker extends DockerBase {
-  function command() {
+  public static function command() {
     return 'docker';
   }
 

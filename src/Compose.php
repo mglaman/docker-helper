@@ -11,7 +11,7 @@ namespace mglaman\Docker;
 
 class Compose extends DockerBase {
 
-  function command() {
+  public static function command() {
     return 'docker-compose';
   }
 
