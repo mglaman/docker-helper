@@ -18,7 +18,7 @@ class Machine extends DockerBase {
    */
   public static function exists()
   {
-    return self::runCommand('docker-machine', ['-v'])->isSuccessful();
+    return self::runCommand('-v')->isSuccessful();
   }
 
   public static function start($name)

@@ -32,7 +32,7 @@ class Compose extends DockerBase {
    */
   public static function exists()
   {
-    return self::runCommand('docker-compose', ['-v'])->isSuccessful();
+    return self::runCommand('-v')->isSuccessful();
   }
 
   /**

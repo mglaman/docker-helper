@@ -19,7 +19,7 @@ class Docker extends DockerBase {
    */
   public static function exists()
   {
-    return self::runCommand('docker', ['-v'])->isSuccessful();
+    return self::runCommand('-v')->isSuccessful();
   }
 
   public static function available()
