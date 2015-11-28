@@ -11,15 +11,10 @@ namespace mglaman\Docker;
 
 use Symfony\Component\Process\ProcessBuilder;
 
-interface DockerInterface {
-  /**
-   * Returns the command to be run.
-   *
-   * @return string
-   */
-  public static function command();
-}
-
+/**
+ * Class DockerBase
+ * @package mglaman\Docker
+ */
 abstract class DockerBase implements DockerInterface {
 
   /**
@@ -29,6 +24,13 @@ abstract class DockerBase implements DockerInterface {
     return PHP_OS == 'Linux';
   }
 
+  /**
+   * @param $command
+   * @param array $args
+   * @param null $callback
+   * @return \Symfony\Component\Process\Process
+   * @throws \Exception
+   */
   protected static function runCommand($command, $args = [], $callback = null)
   {
     // Place command before args
@@ -42,8 +44,7 @@ abstract class DockerBase implements DockerInterface {
     $processBuilder = ProcessBuilder::create($args);
     $processBuilder->setTimeout(3600);
 
-    // Set environment variables. May have been defined with ::dockerMachineEnvironment
-    // and not the parent process.
+    // Set environment variables. May have been defined with ::dockerMachineEnvironment and not the parent process.
     if (!self::native()) {
       $processBuilder->setEnv('DOCKER_TLS_VERIFY', 1);
       $processBuilder->setEnv('DOCKER_MACHINE_NAME', getenv('DOCKER_MACHINE_NAME'));
@@ -55,7 +56,7 @@ abstract class DockerBase implements DockerInterface {
 
     $process->run($callback);
     if (!$process->isSuccessful()) {
-      throw new \Exception('Error executing docker command');
+      throw new \Exception('Error executing docker command: ' . $process->getErrorOutput());
     }
 
     return $process;
