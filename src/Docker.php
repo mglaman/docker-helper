@@ -98,6 +98,34 @@ class Docker extends DockerBase
     }
 
     /**
+     * Removes a container.
+     *
+     * @param array $args
+     * @param null $callback
+     *
+     * @return \Symfony\Component\Process\Process
+     * @throws \Exception
+     */
+    public static function rm(array $args, $callback = null)
+    {
+        return self::runCommand('rm', $args, $callback);
+    }
+
+    /**
+     * Pull image or repository from registry.
+     *
+     * @param array $args
+     * @param null $callback
+     *
+     * @return \Symfony\Component\Process\Process
+     * @throws \Exception
+     */
+    public static function pull(array $args, $callback = null)
+    {
+        return self::runCommand('pull', $args, $callback);
+    }
+
+    /**
      * Return low-level information on a container or image.
      *
      * @param array $args
