@@ -11,6 +11,10 @@ namespace mglaman\Docker\Tests;
 
 use mglaman\Docker\Machine;
 
+/**
+ * Tests the `docker-machine` tests
+ * @group machine
+ **/
 class MachineTest extends \PHPUnit_Framework_TestCase
 {
 

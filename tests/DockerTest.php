@@ -11,6 +11,10 @@ namespace mglaman\Docker\Tests;
 
 use mglaman\Docker\Docker;
 
+/**
+ * Tests the `docker` command tests.
+ * @tag docker
+ **/
 class DockerTest extends \PHPUnit_Framework_TestCase
 {
     public function testExists()
