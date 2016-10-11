@@ -21,7 +21,7 @@ abstract class DockerBase implements DockerInterface {
    * @return bool
    */
   public static function native() {
-    return PHP_OS == 'Linux';
+    return PHP_OS == 'Linux' || file_exists('/var/run/docker.sock');
   }
 
   /**
