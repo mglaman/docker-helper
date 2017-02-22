@@ -9,6 +9,7 @@
 namespace mglaman\Docker;
 
 
+use Symfony\Component\Process\ExecutableFinder;
 use Symfony\Component\Process\ProcessBuilder;
 
 /**
@@ -21,7 +22,10 @@ abstract class DockerBase implements DockerInterface {
    * @return bool
    */
   public static function native() {
-    return PHP_OS == 'Linux' || file_exists('/var/run/docker.sock');
+    $finder = new ExecutableFinder();
+    // If a Docker executable can be found then assume that native commands will
+    // work regardless of OS.
+    return PHP_OS === 'Linux' || file_exists('/var/run/docker.sock') || (bool) $finder->find('docker');
   }
 
   /**
