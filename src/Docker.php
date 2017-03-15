@@ -140,6 +140,20 @@ class Docker extends DockerBase
     }
 
     /**
+     * Executes a command on a container.
+     *
+     * @param array $args
+     * @param null $callback
+     *
+     * @return \Symfony\Component\Process\Process
+     * @throws \Exception
+     */
+    public static function sh($container_name, $command, $callback = null)
+    {
+        return self::runCommand('run -i -t ' . $container_name . ' sh -c ', [$command], $callback);
+    }
+
+    /**
      * Return low-level information on a container or image.
      *
      * @param array $args
