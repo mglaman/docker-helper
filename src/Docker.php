@@ -140,7 +140,7 @@ class Docker extends DockerBase
     }
 
     /**
-     * Executes a command on a container.
+     * Executes a bash command on a container.
      *
      * @param array $args
      * @param null $callback
@@ -150,7 +150,7 @@ class Docker extends DockerBase
      */
     public static function sh($container_name, $command, $callback = null)
     {
-        return self::runCommand('run -i -t ' . $container_name . ' sh -c ', [$command], $callback);
+        return self::exec([$container_name, '/bin/bash', '-c', $command], $callback);
     }
 
     /**
