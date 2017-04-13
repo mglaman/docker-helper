@@ -132,14 +132,18 @@ class Compose extends DockerBase
      * Remove stopped containers.
      *
      * @param bool|false $force
+     * @param bool|false $remove_volumes
      * @return mixed
      * @throws \Exception
      */
-    public static function rm($force = false)
+    public static function rm($force = false, $remove_volumes = false)
     {
         $args = [];
         if ($force) {
             $args[] = '-f';
+        }
+        if ($remove_volumes) {
+            $args[] = '-v';
         }
         return self::runCommand('rm', $args);
     }
