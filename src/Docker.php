@@ -146,4 +146,15 @@ class Docker extends DockerBase
         return $process;
     }
 
+    /**
+     * Gets the docker server version.
+     *
+     * @param null $callback
+     * @return string
+     */
+    public static function getServerVersion($callback = null) {
+        $process = self::runCommand('version', ['--format', '{{.Server.Version}}'], $callback);
+        return trim($process->getOutput());
+    }
+
 }
